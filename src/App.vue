@@ -10,4 +10,14 @@ import FooterItem from "./components/FooterItem.vue";
   </div>
 </template>
 
-<style scoped></style>
+<style>
+body {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  body {
+    margin: 0;
+  }
+}
+</style>

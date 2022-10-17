@@ -97,7 +97,7 @@ nav > .items-right > #searchIcon {
     transition: height 1s ease;
     overflow-y: hidden;
     top: 50px;
-    margin-left: -30px;
+    margin-left: -20px;
     margin-right: 2vw;
     background-color: #fff;
     z-index: 1;

@@ -1,16 +1,19 @@
-<script setup></script>
+<script setup>
+import ShopImgItem from "../components/ShopImgItem.vue";
+</script>
 
 <template>
   <main>
-    <div class="grid">
-      <div class="row">
-        <div class="overflow">
-          <a href="">
-            <img alt="Banner" src="../assets/banner.jpg" />
-            <div class="text">
-              <p>MEN Y-3 KYUJO</p>
-            </div>
-          </a>
+    <div class="banners">
+      <div class="big">
+        <ShopImgItem img="banner.jpg" title="MEN Y-3 KYUJO" />
+      </div>
+      <div class="medium">
+        <div class="left">
+          <ShopImgItem title="WOMEN SNEAKERS" img="banner2.jpg" />
+        </div>
+        <div class="right">
+          <ShopImgItem title="MEN Y-3 KYUJO" img="banner3.jpg" />
         </div>
       </div>
     </div>
@@ -18,70 +21,29 @@
 </template>
 
 <style scoped>
-main > .grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-  position: relative;
-  height: 100%;
-  width: 100%;
+.big,
+.medium {
+  margin-bottom: 3.8rem;
 }
-main > .grid > .row {
+.medium {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   position: relative;
   align-items: center;
-  height: 100%;
-  width: 100%;
+  padding: 0 9rem;
 }
-main > .grid > .row > overflow > a {
-  display: flex;
-  justify-content: center;
-  position: relative;
-  align-items: center;
-  height: 100%;
-  width: 100%;
+.medium > .left {
+  width: 50%;
+  padding-right: 2rem;
 }
-img {
-  transition: transform 0.8s ease;
-  height: auto;
-  width: 100%;
+.medium > .right {
+  width: 50%;
+  padding-left: 2rem;
 }
-img:hover {
-  transform: scale(1.1);
+.banners {
+  padding: 0 2.8rem 2.8rem 2.8rem;
 }
-.overflow {
-  overflow: hidden;
-}
-.text {
-  position: absolute;
-  bottom: 0;
-  width: 12%;
-  height: auto;
-  background-color: #fff;
-  color: #000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 0.9rem;
-  font-weight: 100;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-@media (max-width: 768px) {
-  main {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-  main > .grid > .row {
-    width: 100%;
-  }
-  .text {
-    width: 50%;
-    font-size: 0.7rem;
-  }
+.banners > .medium > .left > .grid > .row > .overflow > a > img {
+  width: 80%;
 }
 </style>
