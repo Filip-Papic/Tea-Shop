@@ -31,7 +31,6 @@
       </RouterLink>
     </div>
   </nav>
-  asdasdad
 </template>
 
 <script setup></script>
@@ -90,7 +89,7 @@ nav > .items-right > #searchIcon {
   .fa-user {
     display: none;
   }
-  nav > .items {
+  .items {
     position: absolute;
     display: block;
     width: 100%;
@@ -112,13 +111,13 @@ nav > .items-right > #searchIcon {
   nav > .items > a + a {
     margin-top: 1vw;
   }
-  nav > .items > a:after {
+  .items > a:after {
     background-color: #ddd;
   }
-  nav > #nav-check:not(:checked) ~ .items {
+  #nav-check:not(:checked) ~ .items {
     display: none;
   }
-  nav > #nav-check:checked ~ .items {
+  #nav-check:checked ~ .items {
     height: calc(100vh - 50px);
     overflow-y: auto;
   }
