@@ -18,7 +18,7 @@ const imgSrc = computed(() => {
   <div class="overflow">
     <a href="">
       <img :src="imgSrc" />
-    <p class="text">{{ props.title }}</p>
+      <p class="text">{{ props.title }}</p>
     </a>
   </div>
 </template>

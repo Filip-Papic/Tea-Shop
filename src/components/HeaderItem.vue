@@ -9,7 +9,7 @@
       </label>
     </div>
     <div class="items">
-      <RouterLink to="/">SHOP</RouterLink>
+      <RouterLink to="/shop">SHOP</RouterLink>
       <RouterLink to="/">BLOG</RouterLink>
       <RouterLink to="/">CONTACTS</RouterLink>
     </div>

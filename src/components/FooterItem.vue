@@ -5,7 +5,7 @@
     <div class="container">
       <div class="footer-left">
         <h3 class="copy">All rights reserved. © 2022</h3>
-        <RouterLink to="/">Shop</RouterLink>
+        <RouterLink to="/shop">Shop</RouterLink>
         <RouterLink to="/">Blog</RouterLink>
         <RouterLink to="/">Contacts</RouterLink>
       </div>
@@ -69,6 +69,7 @@ h3 {
   color: rgba(255, 255, 255, 0.312);
   font-size: 1rem;
   padding-right: 2rem;
+  padding-top: 5%;
 }
 .fa-facebook-f:hover,
 .fa-google-plus:hover,
@@ -107,6 +108,9 @@ h3 {
     display: block;
     text-align: center;
     height: 3rem;
+  }
+  .copy {
+    padding-top: 5%;
   }
 }
 </style>

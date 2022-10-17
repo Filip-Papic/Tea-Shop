@@ -39,7 +39,6 @@ import CategoriesGrid from "../components/CategoriesGrid.vue";
   left: 25rem;
   color: rgba(0, 0, 0, 0.1);
 }
-
 .blockquote::after {
   content: "";
   top: 20px;
@@ -50,7 +49,6 @@ import CategoriesGrid from "../components/CategoriesGrid.vue";
   height: 3px;
   width: 33%;
 }
-
 @media screen and (max-width: 800px) {
   .blockquote .quotemark {
     top: -90%;
