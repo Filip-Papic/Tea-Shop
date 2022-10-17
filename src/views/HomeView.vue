@@ -1,49 +1,63 @@
 <script setup>
-import ShopImgItem from "../components/ShopImgItem.vue";
+import BannerItem from "../components/BannerItem.vue";
+import CategoriesGrid from "../components/CategoriesGrid.vue";
 </script>
 
 <template>
   <main>
     <div class="banners">
       <div class="big">
-        <ShopImgItem img="banner.jpg" title="MEN Y-3 KYUJO" />
-      </div>
-      <div class="medium">
-        <div class="left">
-          <ShopImgItem title="WOMEN SNEAKERS" img="banner2.jpg" />
-        </div>
-        <div class="right">
-          <ShopImgItem title="MEN Y-3 KYUJO" img="banner3.jpg" />
-        </div>
+        <BannerItem img="banner.png" title="Live Naturally" />
       </div>
     </div>
+    <blockquote class="blockquote">
+      <p class="quotemark">“</p>
+      <p>“A cup of tea solves everything.”</p>
+    </blockquote>
+    <br />
+    <CategoriesGrid />
   </main>
 </template>
 
 <style scoped>
-.big,
-.medium {
-  margin-bottom: 3.8rem;
-}
-.medium {
-  display: flex;
-  justify-content: space-between;
+.blockquote {
+  padding: 60px 80px 40px;
   position: relative;
-  align-items: center;
-  padding: 0 9rem;
 }
-.medium > .left {
-  width: 50%;
-  padding-right: 2rem;
+.blockquote p {
+  font-family: "Utopia-italic";
+  font-size: 35px;
+  font-weight: 700px;
+  text-align: center;
 }
-.medium > .right {
-  width: 50%;
-  padding-left: 2rem;
+.blockquote .quotemark {
+  font-family: "Utopia-italic";
+  font-size: 300px;
+  font-weight: 700px;
+  position: absolute;
+  top: -20rem;
+  left: 25rem;
+  color: rgba(0, 0, 0, 0.1);
 }
-.banners {
-  padding: 0 2.8rem 2.8rem 2.8rem;
+
+.blockquote::after {
+  content: "";
+  top: 20px;
+  left: 40%;
+  margin-left: -100px;
+  position: absolute;
+  border-bottom: 3px solid #bf0024;
+  height: 3px;
+  width: 33%;
 }
-.banners > .medium > .left > .grid > .row > .overflow > a > img {
-  width: 80%;
+
+@media screen and (max-width: 800px) {
+  .blockquote .quotemark {
+    top: -90%;
+    left: 0;
+  }
+  .blockquote.blockquote::after {
+    width: 87%;
+  }
 }
 </style>

@@ -28,6 +28,7 @@ footer {
   width: 100%;
   background-color: rgba(0, 0, 0, 0.86);
   text-align: center;
+  margin-top: 6.9rem;
 }
 footer > .container {
   display: flex;

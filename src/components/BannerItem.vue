@@ -69,14 +69,14 @@ img:hover {
 .text {
   position: absolute;
   bottom: 0;
-  width: 12%;
+  width: 15%;
   height: auto;
   background-color: #fff;
   color: #000;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 0.9rem;
+  font-size: 1.4rem;
   font-weight: 100;
   left: 0;
   right: 0;

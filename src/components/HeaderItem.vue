@@ -14,7 +14,7 @@
       <RouterLink to="/">CONTACTS</RouterLink>
     </div>
     <a href="/">
-      <img src="@\assets\logo.png" alt="logo" />
+      <img src="..\assets\logo.png" alt="logo" />
     </a>
     <div class="items-right">
       <input type="text" placeholder="Type & hit enter..." id="search" />
@@ -161,8 +161,8 @@ nav > .items-right > #searchIcon {
 }
 
 img {
-  width: 3em;
-  height: 1.8em;
+  width: 2.8em;
+  height: 3em;
 }
 
 .fa-magnifying-glass,
