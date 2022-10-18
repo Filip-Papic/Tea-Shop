@@ -11,7 +11,7 @@
     <div class="items">
       <RouterLink to="/shop">SHOP</RouterLink>
       <RouterLink to="/blog">BLOG</RouterLink>
-      <RouterLink to="/">CONTACTS</RouterLink>
+      <RouterLink to="/contacts">CONTACTS</RouterLink>
     </div>
     <a href="/">
       <img src="..\assets\logo.png" alt="logo" />

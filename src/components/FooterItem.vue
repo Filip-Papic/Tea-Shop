@@ -7,7 +7,7 @@
         <h3 class="copy">All rights reserved. © 2022</h3>
         <RouterLink to="/shop">Shop</RouterLink>
         <RouterLink to="/blog">Blog</RouterLink>
-        <RouterLink to="/">Contacts</RouterLink>
+        <RouterLink to="/contacts">Contacts</RouterLink>
       </div>
       <div class="footer-right">
         <font-awesome-icon icon="fa-brands fa-facebook-f" />
