@@ -60,6 +60,7 @@ img:hover {
   overflow: hidden;
 }
 .text {
+  font-family: "Roboto", sans-serif;
   position: absolute;
   bottom: 0;
   width: 15%;
@@ -70,7 +71,7 @@ img:hover {
   justify-content: center;
   align-items: center;
   font-size: 1.4rem;
-  font-weight: 100;
+  font-weight: 300;
   left: 0;
   right: 0;
   margin-left: auto;

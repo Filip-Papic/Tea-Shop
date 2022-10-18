@@ -79,10 +79,10 @@ console.log(success.value);
   margin-top: 3rem;
 }
 .contact h3 {
-  margin-bottom: 0rem;
+  margin-bottom: 3rem;
 }
 .contact h4 {
-  margin-top: 1rem;
+  margin-top: 0rem;
   margin-bottom: 0rem;
 }
 .contact p {
@@ -96,7 +96,7 @@ console.log(success.value);
   justify-content: center;
 }
 .hours h3 {
-  margin-bottom: 0rem;
+  margin-bottom: 3.7rem;
 }
 .hours p {
   margin-top: 0rem;

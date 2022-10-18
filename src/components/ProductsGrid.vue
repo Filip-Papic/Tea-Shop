@@ -8,25 +8,22 @@ import ProductGridItem from "./ProductGridItem.vue";
       <div class="column">
         <ProductGridItem
           img="green-tea-product.jpg"
-          title="Hunan Green Loose Leaf green"
+          title="Hunan Green Loose Leaf"
         />
         <ProductGridItem
           img="green-tea-product2.jpg"
-          title="Dragon Well Loose Leaf green"
+          title="Dragon Well Loose Leaf"
         />
-        <ProductGridItem
-          img="yellow-tea-product.jpg"
-          title="Huang Xiao yellow"
-        />
+        <ProductGridItem img="yellow-tea-product.jpg" title="Huang Xiao" />
       </div>
       <div class="column">
         <ProductGridItem
           img="black-tea-product.jpg"
-          title="Decaf English Breakfast black"
+          title="Decaf English Breakfast"
         />
         <ProductGridItem
           img="oolong-tea-product.jpg"
-          title="Milk Oolong Loose Leaf oolong"
+          title="Milk Oolong Loose Leaf"
         />
         <ProductGridItem
           img="herbal-tea-product.jpg"
@@ -40,7 +37,7 @@ import ProductGridItem from "./ProductGridItem.vue";
         />
         <ProductGridItem
           img="fruit-tea-product.jpg"
-          title="Rooibos Brekfast Loose Leaf fruit"
+          title="Rooibos Brekfast Loose Leaf"
         />
       </div>
     </div>

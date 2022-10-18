@@ -1,5 +1,7 @@
 <script setup>
 import { computed } from "vue";
+import router from "../router";
+
 const props = defineProps({
   img: {
     type: String,
@@ -13,10 +15,13 @@ const props = defineProps({
 const imgSrc = computed(() => {
   return new URL(`../assets/${props.img}`, import.meta.url);
 });
+function singleProduct() {
+  router.push({ name: "product", params: { id: 3 } });
+}
 </script>
 
 <template>
-  <div class="card">
+  <div class="card" @click="singleProduct()">
     <div class="overflow">
       <img :src="imgSrc" loading="lazy" />
     </div>
@@ -24,7 +29,7 @@ const imgSrc = computed(() => {
       <h4>
         <b>{{ title }}</b>
       </h4>
-      <p>some description...</p>
+      <p class="price">$5.00</p>
       <button class="button">Add to cart</button>
     </div>
   </div>
@@ -65,6 +70,15 @@ h4 {
   font-size: 1.5rem;
   font-weight: 400;
   margin-bottom: 0.5rem;
+}
+.price {
+  color: grey;
+  font-size: 1.5rem;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 1rem;
 }
 p {
   font-family: "Roboto", sans-serif;
