@@ -1,44 +1,20 @@
 <script setup>
 import ProductGridItem from "./ProductGridItem.vue";
+import { useProductsStore } from "../stores/products";
+
+const products = useProductsStore();
+products.fetchProducts();
 </script>
 
 <template>
   <div class="container">
     <div class="row">
-      <div class="column">
-        <ProductGridItem
-          img="green-tea-product.jpg"
-          title="Hunan Green Loose Leaf"
-        />
-        <ProductGridItem
-          img="green-tea-product2.jpg"
-          title="Dragon Well Loose Leaf"
-        />
-        <ProductGridItem img="yellow-tea-product.jpg" title="Huang Xiao" />
-      </div>
-      <div class="column">
-        <ProductGridItem
-          img="black-tea-product.jpg"
-          title="Decaf English Breakfast"
-        />
-        <ProductGridItem
-          img="oolong-tea-product.jpg"
-          title="Milk Oolong Loose Leaf"
-        />
-        <ProductGridItem
-          img="herbal-tea-product.jpg"
-          title="Butterfly Pea Flowers"
-        />
-      </div>
-      <div class="column">
-        <ProductGridItem
-          img="white-tea-product.jpg"
-          title="White Peony Loose Leaf"
-        />
-        <ProductGridItem
-          img="fruit-tea-product.jpg"
-          title="Rooibos Brekfast Loose Leaf"
-        />
+      <div
+        class="column"
+        v-for="product in products.products"
+        :key="product.id"
+      >
+        <ProductGridItem :product="product" />
       </div>
     </div>
   </div>

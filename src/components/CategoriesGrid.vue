@@ -1,22 +1,16 @@
 <script setup>
 import CategoryGridItem from "./CategoryGridItem.vue";
+import { useCategoriesStore } from "../stores/categories";
+
+const categories = useCategoriesStore();
+categories.fetchCategories();
 </script>
 
 <template>
   <div class="container">
     <div class="row">
-      <div class="column">
-        <CategoryGridItem img="green-tea-cat.jpg" title="Green tea" />
-        <CategoryGridItem img="yellow-tea-cat.jpg" title="Yellow tea" />
-      </div>
-      <div class="column">
-        <CategoryGridItem img="black-tea-cat.jpg" title="Black tea" />
-        <CategoryGridItem img="oolong-tea-cat.jpg" title="Oolong tea" />
-        <CategoryGridItem img="herbal-tea-cat.jpg" title="Herbal tea" />
-      </div>
-      <div class="column">
-        <CategoryGridItem img="white-tea-cat.jpg" title="White tea" />
-        <CategoryGridItem img="fruit-tea-cat.jpg" title="Fruit tea" />
+      <div class="column" v-for="cat in categories.categories" :key="cat.id">
+        <CategoryGridItem :image="cat.image" :title="cat.name" />
       </div>
     </div>
   </div>

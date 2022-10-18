@@ -1,35 +1,30 @@
 <script setup>
-import { computed } from "vue";
 import router from "../router";
 
 const props = defineProps({
-  img: {
-    type: String,
+  product: {
+    type: Object,
     required: true,
   },
-  title: {
-    type: String,
-    required: true,
-  },
-});
-const imgSrc = computed(() => {
-  return new URL(`../assets/${props.img}`, import.meta.url);
 });
 function singleProduct() {
-  router.push({ name: "product", params: { id: 3 } });
+  router.push({
+    name: "product",
+    params: { id: props.product.id, name: props.product.name },
+  });
 }
 </script>
 
 <template>
   <div class="card" @click="singleProduct()">
     <div class="overflow">
-      <img :src="imgSrc" loading="lazy" />
+      <img :src="props.product.image" loading="lazy" />
     </div>
     <div class="container">
       <h4>
-        <b>{{ title }}</b>
+        <b>{{ props.product.name }}</b>
       </h4>
-      <p class="price">$5.00</p>
+      <p class="price">${{ props.product.price }}</p>
       <button class="button">Add to cart</button>
     </div>
   </div>
@@ -43,6 +38,7 @@ function singleProduct() {
   border-radius: 5px;
   overflow: hidden;
   margin-bottom: 1rem;
+  cursor: pointer;
 }
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);

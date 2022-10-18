@@ -20,7 +20,7 @@ const search = ref(false);
       <RouterLink to="/contacts">CONTACTS</RouterLink>
     </div>
     <a href="/">
-      <img src="..\assets\logo.png" alt="logo" />
+      <img src="..\assets\images\logo.png" alt="logo" />
     </a>
     <div class="items-right">
       <transition name="slide-fade">

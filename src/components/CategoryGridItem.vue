@@ -1,7 +1,6 @@
 <script setup>
-import { computed } from "vue";
 const props = defineProps({
-  img: {
+  image: {
     type: String,
     required: true,
   },
@@ -10,14 +9,12 @@ const props = defineProps({
     required: true,
   },
 });
-const imgSrc = computed(() => {
-  return new URL(`../assets/${props.img}`, import.meta.url);
-});
+console.log(props.image);
 </script>
 <template>
   <div class="overflow">
     <a href="">
-      <img :src="imgSrc" />
+      <img :src="props.image" />
       <p class="text">{{ props.title }}</p>
     </a>
   </div>
