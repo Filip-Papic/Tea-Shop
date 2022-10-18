@@ -1,3 +1,9 @@
+<script setup>
+import { ref } from "vue";
+
+const search = ref(false);
+</script>
+
 <template>
   <nav>
     <input type="checkbox" id="nav-check" />
@@ -17,10 +23,21 @@
       <img src="..\assets\logo.png" alt="logo" />
     </a>
     <div class="items-right">
+      <transition name="slide-fade">
+        <input
+          v-if="search"
+          type="text"
+          placeholder="Type & hit enter..."
+          id="searchBig"
+        />
+      </transition>
       <input type="text" placeholder="Type & hit enter..." id="search" />
       <font-awesome-icon icon="fa-solid fa-magnifying-glass" id="searchIcon" />
       <RouterLink to="/"
-        ><font-awesome-icon icon="fa-solid fa-magnifying-glass" />
+        ><font-awesome-icon
+          icon="fa-solid fa-magnifying-glass"
+          @click="search = !search"
+        />
       </RouterLink>
       <RouterLink to="/"
         ><font-awesome-icon icon="fa-regular fa-user" />
@@ -33,9 +50,20 @@
   </nav>
 </template>
 
-<script setup></script>
-
 <style scoped>
+.slide-fade-enter-active {
+  transition: all 0.5s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(20px);
+  opacity: 0;
+}
 nav {
   display: flex;
   justify-content: space-between;
@@ -179,7 +207,18 @@ img {
 .fa-bag-shopping:hover {
   color: rgba(0, 0, 0, 0.458);
 }
-
+#searchBig {
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.19);
+  font-family: "Josefin Sans";
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.582);
+  animation: 1s fadeIn;
+  animation-fill-mode: forwards;
+}
+#searchBig:focus {
+  outline: none;
+}
 .badge {
   top: 1rem;
   right: 1rem;
