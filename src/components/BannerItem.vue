@@ -19,7 +19,7 @@ const imgSrc = computed(() => {
   <div class="grid">
     <div class="row">
       <div class="overflow">
-        <a href="">
+        <a href="/">
           <img alt="Banner" :src="imgSrc" />
           <div class="text">
             <p>{{ props.title }}</p>
@@ -32,20 +32,13 @@ const imgSrc = computed(() => {
 
 <style scoped>
 .grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
   position: relative;
-  height: 100%;
-  width: 100%;
 }
 .grid > .row {
   display: flex;
   justify-content: center;
   position: relative;
   align-items: center;
-  height: 100%;
-  width: 100%;
 }
 .grid > .row > overflow > a {
   display: flex;
@@ -57,8 +50,8 @@ const imgSrc = computed(() => {
 }
 img {
   transition: transform 0.8s ease;
-  height: auto;
-  width: 100%;
+  height: 33vw;
+  width: 76vw;
 }
 img:hover {
   transform: scale(1.1);
@@ -91,6 +84,10 @@ img:hover {
   .text {
     width: 50%;
     font-size: 0.7rem;
+  }
+  img {
+    height: 100%;
+    width: 100%;
   }
 }
 </style>

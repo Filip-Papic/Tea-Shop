@@ -6,17 +6,42 @@ import ProductGridItem from "./ProductGridItem.vue";
   <div class="container">
     <div class="row">
       <div class="column">
-        <ProductGridItem img="green-tea-cat.jpg" title="Green tea" />
-        <ProductGridItem img="yellow-tea-cat.jpg" title="Yellow tea" />
+        <ProductGridItem
+          img="green-tea-product.jpg"
+          title="Hunan Green Loose Leaf green"
+        />
+        <ProductGridItem
+          img="green-tea-product2.jpg"
+          title="Dragon Well Loose Leaf green"
+        />
+        <ProductGridItem
+          img="yellow-tea-product.jpg"
+          title="Huang Xiao yellow"
+        />
       </div>
       <div class="column">
-        <ProductGridItem img="black-tea-cat.jpg" title="Black tea" />
-        <ProductGridItem img="oolong-tea-cat.jpg" title="Oolong tea" />
-        <ProductGridItem img="herbal-tea-cat.jpg" title="Herbal tea" />
+        <ProductGridItem
+          img="black-tea-product.jpg"
+          title="Decaf English Breakfast black"
+        />
+        <ProductGridItem
+          img="oolong-tea-product.jpg"
+          title="Milk Oolong Loose Leaf oolong"
+        />
+        <ProductGridItem
+          img="herbal-tea-product.jpg"
+          title="Butterfly Pea Flowers"
+        />
       </div>
       <div class="column">
-        <ProductGridItem img="white-tea-cat.jpg" title="White tea" />
-        <ProductGridItem img="fruit-tea-cat.jpg" title="Fruit tea" />
+        <ProductGridItem
+          img="white-tea-product.jpg"
+          title="White Peony Loose Leaf"
+        />
+        <ProductGridItem
+          img="fruit-tea-product.jpg"
+          title="Rooibos Brekfast Loose Leaf fruit"
+        />
       </div>
     </div>
   </div>
@@ -34,6 +59,18 @@ import ProductGridItem from "./ProductGridItem.vue";
   height: 100%;
   width: 100%;
   margin-top: -2rem;
+  animation: 1s fadeIn;
+  animation-fill-mode: forwards;
+  visibility: hidden;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 .row {
   margin-top: 4rem;

@@ -18,7 +18,7 @@ const imgSrc = computed(() => {
 <template>
   <div class="card">
     <div class="overflow">
-      <img :src="imgSrc" />
+      <img :src="imgSrc" loading="lazy" />
     </div>
     <div class="container">
       <h4>

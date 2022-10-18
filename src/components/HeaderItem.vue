@@ -10,7 +10,7 @@
     </div>
     <div class="items">
       <RouterLink to="/shop">SHOP</RouterLink>
-      <RouterLink to="/">BLOG</RouterLink>
+      <RouterLink to="/blog">BLOG</RouterLink>
       <RouterLink to="/">CONTACTS</RouterLink>
     </div>
     <a href="/">

@@ -6,7 +6,7 @@
       <div class="footer-left">
         <h3 class="copy">All rights reserved. © 2022</h3>
         <RouterLink to="/shop">Shop</RouterLink>
-        <RouterLink to="/">Blog</RouterLink>
+        <RouterLink to="/blog">Blog</RouterLink>
         <RouterLink to="/">Contacts</RouterLink>
       </div>
       <div class="footer-right">
