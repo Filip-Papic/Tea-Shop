@@ -1,19 +1,19 @@
 import { defineStore } from "pinia";
-import { products } from "../data/products";
+import { productsData } from "../data/productsData";
 
 export const useProductsStore = defineStore({
   id: "products",
   state: () => ({
     products: [],
+    product: {},
   }),
-  getters: {
-    getProductById: (id) => {
-      return this.products.find((product) => product.id === id);
-    },
-  },
+  getters: {},
   actions: {
     fetchProducts() {
-      this.products = products;
+      this.products = productsData;
+    },
+    fetchProduct(id) {
+      this.product = productsData.find((p) => p.id == id);
     },
   },
 });

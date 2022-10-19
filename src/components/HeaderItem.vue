@@ -1,7 +1,10 @@
 <script setup>
 import { ref } from "vue";
+import { useCartStore } from "../stores/cart";
 
 const search = ref(false);
+
+const cartStore = useCartStore();
 </script>
 
 <template>
@@ -42,9 +45,9 @@ const search = ref(false);
       <RouterLink to="/"
         ><font-awesome-icon icon="fa-regular fa-user" />
       </RouterLink>
-      <RouterLink to="/"
+      <RouterLink to="/cart"
         ><font-awesome-icon icon="fa-solid fa-bag-shopping" />
-        <span class="badge">0</span>
+        <span class="badge">{{ cartStore.getCartQuantity }}</span>
       </RouterLink>
     </div>
   </nav>
@@ -233,6 +236,8 @@ img {
   justify-content: center;
   align-items: center;
   font-size: 0.8rem;
+  font-weight: 400;
+  font-family: "Roboto";
 }
 
 .items-right {

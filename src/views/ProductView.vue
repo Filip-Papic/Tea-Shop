@@ -1,34 +1,47 @@
 <script setup>
 import { ref } from "vue";
+import { useRoute } from "vue-router";
+import { useProductsStore } from "../stores/products";
+import { useCartStore } from "../stores/cart";
+
 const showModal = ref("none");
+
+const route = useRoute();
+const id = route.params.id;
+
+const quantity = ref(1);
+const cartStore = useCartStore();
+function addToCart() {
+  cartStore.addToCart(product, quantity.value);
+}
+
+const products = useProductsStore();
+products.fetchProduct(id);
+const product = products.product;
 </script>
+
 <template>
   <div class="product">
     <div class="row">
       <div class="column">
         <div class="product-image" @click="showModal = 'block'">
-          <img src="../assets/green-tea-product.jpg" alt="Product" />
+          <img :src="product.image" alt="Product" />
         </div>
       </div>
       <div class="column">
         <div class="product-info">
-          <h1>asdasd</h1>
+          <h1>{{ product.name }}</h1>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-            fermentum, nisl eget aliquam tincidunt, nunc elit aliquam massa, nec
-            luctus nunc lorem eget dolor. Sed euismod, nisl eget aliquam
-            tincidunt, nunc elit aliquam massa, nec luctus nunc lorem eget
-            dolor. Sed euismod, nisl eget aliquam tincidunt, nunc elit aliquam
-            massa, nec luctus nunc lorem eget dolor.
+            {{ product.description }}
           </p>
           <div class="product-price">
-            <p>$ 12.99</p>
+            <p>${{ product.price }}</p>
           </div>
           <div class="product-quantity">
             <p>Quantity</p>
-            <input type="number" min="1" max="10" value="1" />
+            <input type="number" min="1" max="10" v-model="quantity" />
           </div>
-          <div class="product-add">
+          <div class="product-add" @click="addToCart">
             <button>Add to Cart</button>
           </div>
         </div>
@@ -40,7 +53,7 @@ const showModal = ref("none");
     <img
       class="modal-content"
       id="img01"
-      src="../assets/green-tea-product.jpg"
+      src="../assets/images/products/green-tea-product.jpg"
     />
     <div id="caption"></div>
   </div>
@@ -213,6 +226,10 @@ const showModal = ref("none");
   font-size: 1rem;
   font-weight: 400;
   cursor: pointer;
+}
+
+.product > .row > .column > .product-info > .product-add > button:hover {
+  background-color: rgba(0, 0, 0, 0.508);
 }
 
 @media (max-width: 768px) {

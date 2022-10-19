@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { categories } from "../data/categories";
+import { categoriesData } from "../data/categoriesData";
 
 export const useCategoriesStore = defineStore({
   id: "categories",
@@ -13,7 +13,7 @@ export const useCategoriesStore = defineStore({
   },
   actions: {
     fetchCategories() {
-      this.categories = categories;
+      this.categories = categoriesData;
     },
   },
 });

@@ -1,5 +1,6 @@
 <script setup>
 import router from "../router";
+import { useCartStore } from "../stores/cart";
 
 const props = defineProps({
   product: {
@@ -7,12 +8,17 @@ const props = defineProps({
     required: true,
   },
 });
-function singleProduct() {
+const singleProduct = () => {
   router.push({
     name: "product",
     params: { id: props.product.id, name: props.product.name },
   });
-}
+};
+
+const cartStore = useCartStore();
+const addToCart = () => {
+  cartStore.addToCart(props.product, 1);
+};
 </script>
 
 <template>
@@ -25,7 +31,7 @@ function singleProduct() {
         <b>{{ props.product.name }}</b>
       </h4>
       <p class="price">${{ props.product.price }}</p>
-      <button class="button">Add to cart</button>
+      <button class="button" @click.stop="addToCart">Add to cart</button>
     </div>
   </div>
 </template>

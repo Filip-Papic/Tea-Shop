@@ -9,8 +9,8 @@ const props = defineProps({
     required: true,
   },
 });
-console.log(props.image);
 </script>
+
 <template>
   <div class="overflow">
     <a href="">
