@@ -1,36 +1,30 @@
 <script setup>
-import { computed } from "vue";
 const props = defineProps({
-  img: {
-    type: String,
-    required: true,
-  },
   title: {
     type: String,
     required: true,
   },
-});
-const imgSrc = computed(() => {
-  return new URL(`../assets/${props.img}`, import.meta.url);
+  content: {
+    type: String,
+    required: true,
+  },
+  image: {
+    type: String,
+    required: true,
+  },
 });
 </script>
 
 <template>
   <div class="card">
     <div class="overflow">
-      <img :src="imgSrc" loading="lazy" />
+      <img :src="props.image" loading="lazy" />
     </div>
     <div class="container">
       <h4>
-        <b>{{ title }}</b>
+        <b>{{ props.title }}</b>
       </h4>
-      <p>
-        Long Jing tea (龙井茶), also known by its literal translation, “Dragon
-        Well”, is a variety of pan-fried green tea from Hangzhou, China’s
-        Zhejiang Province. It can be argued that Long Jing is the most
-        prestigious Chinese green tea; in the Qing Dynasty, Long Jing was given
-        the status of “Imperial Tea”.
-      </p>
+      <p>{{ props.content.substring(0, 300) }}...</p>
     </div>
   </div>
 </template>
@@ -61,7 +55,7 @@ h4 {
   margin-bottom: 0.5rem;
 }
 p {
-  font-family: "Montserrat";
+  font-family: "Roboto", sans-serif;
   font-size: 1.2rem;
   font-weight: 400;
   margin-bottom: 0.5rem;

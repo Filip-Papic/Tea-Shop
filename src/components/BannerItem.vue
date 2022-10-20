@@ -84,7 +84,7 @@ img:hover {
   }
   .text {
     width: 50%;
-    font-size: 0.7rem;
+    font-size: 1rem;
   }
   img {
     height: 100%;

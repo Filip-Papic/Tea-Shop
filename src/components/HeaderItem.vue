@@ -1,8 +1,16 @@
 <script setup>
 import { ref } from "vue";
 import { useCartStore } from "../stores/cart";
+import { useRouter } from "vue-router";
 
-const search = ref(false);
+const route = useRouter();
+
+const toSearch = ref("");
+const searchFlag = ref(false);
+const search = () => {
+  searchFlag.value = true;
+  route.push({ name: "search", query: { q: toSearch.value } });
+};
 
 const cartStore = useCartStore();
 </script>
@@ -28,20 +36,46 @@ const cartStore = useCartStore();
     <div class="items-right">
       <transition name="slide-fade">
         <input
-          v-if="search"
+          v-if="searchFlag"
           type="text"
           placeholder="Type & hit enter..."
           id="searchBig"
+          v-model="toSearch"
         />
       </transition>
-      <input type="text" placeholder="Type & hit enter..." id="search" />
-      <font-awesome-icon icon="fa-solid fa-magnifying-glass" id="searchIcon" />
-      <RouterLink to="/"
-        ><font-awesome-icon
+      <input
+        type="text"
+        placeholder="Type & hit enter..."
+        id="search"
+        v-model="toSearch"
+      />
+
+      <!-- for mobile -->
+      <font-awesome-icon
+        icon="fa-solid fa-magnifying-glass"
+        id="searchIcon"
+        @click="searchFlag === true, search()"
+      >
+      </font-awesome-icon>
+      <!-- -->
+
+      <!-- for desktop -->
+      <font-awesome-icon
+        v-if="(!searchFlag, toSearch === '')"
+        icon="fa-solid fa-magnifying-glass"
+        @click="(searchFlag = !searchFlag), (toSearch = '')"
+      />
+      <RouterLink
+        v-if="(searchFlag, toSearch !== '')"
+        :to="{ name: 'search', query: { q: toSearch } }"
+      >
+        <font-awesome-icon
           icon="fa-solid fa-magnifying-glass"
-          @click="search = !search"
+          @click="(searchFlag = !searchFlag), (toSearch = '')"
         />
       </RouterLink>
+      <!-- -->
+
       <RouterLink to="/"
         ><font-awesome-icon icon="fa-regular fa-user" />
       </RouterLink>
@@ -158,7 +192,7 @@ nav > .items-right > #searchIcon {
     height: 30px;
     border: 1px solid #000;
     margin-top: 50px;
-    margin-right: -3vw;
+    margin-right: -5vw;
     z-index: 1;
     border-style: none none solid none;
     border-color: rgba(0, 0, 0, 0.19);
@@ -188,6 +222,9 @@ nav > .items-right > #searchIcon {
   }
   nav > #nav-check:checked ~ .items-right > #searchIcon {
     display: block;
+  }
+  #searchBig {
+    display: none;
   }
 }
 

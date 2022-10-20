@@ -1,20 +1,24 @@
 <script setup>
 import ProductGridItem from "./ProductGridItem.vue";
-import { useProductsStore } from "../stores/products";
 
-const products = useProductsStore();
-products.fetchProducts();
+const props = defineProps({
+  products: {
+    type: Array,
+    required: true,
+  },
+});
 </script>
 
 <template>
   <div class="container">
-    <div class="row">
-      <div
-        class="column"
-        v-for="product in products.products"
-        :key="product.id"
-      >
+    <div class="row" v-if="products.length > 1">
+      <div class="column" v-for="product in props.products" :key="product.id">
         <ProductGridItem :product="product" />
+      </div>
+    </div>
+    <div v-else class="row">
+      <div class="oneColumn">
+        <ProductGridItem :product="props.products[0]" />
       </div>
     </div>
   </div>
@@ -58,6 +62,12 @@ products.fetchProducts();
 .column {
   flex: 30%;
   max-width: 33%;
+  padding: 0 5px;
+}
+
+.oneColumn {
+  flex: 100%;
+  max-width: 100%;
   padding: 0 5px;
 }
 

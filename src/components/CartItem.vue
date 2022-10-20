@@ -8,7 +8,12 @@ const props = defineProps({
   },
 });
 
-const emits = defineEmits(["remove", "increment", "decrement"]);
+const emits = defineEmits([
+  "remove",
+  "increment",
+  "decrement",
+  "input-quantity",
+]);
 
 const quantity = ref(props.product.quantity);
 const increment = () => {
@@ -18,6 +23,16 @@ const increment = () => {
 const decrement = () => {
   quantity.value--;
   emits("decrement", props.product);
+};
+const inputQuantity = (e) => {
+  quantity.value = e.target.value;
+  emits("input-quantity", {
+    id: props.product.id,
+    quantity: e.target.value,
+  });
+};
+const remove = () => {
+  emits("remove", props.product);
 };
 </script>
 
@@ -33,18 +48,24 @@ const decrement = () => {
       <h3>
         Quantity:
         <b>
-          <input v-model="quantity" />
+          <input v-model="quantity" @input="inputQuantity($event)" />
           <font-awesome-icon icon="fa-solid fa-plus" @click="increment()" />
           <font-awesome-icon icon="fa-solid fa-minus" @click="decrement()" />
         </b>
       </h3>
       <br />
     </div>
+    <font-awesome-icon
+      class="remove"
+      icon="fa-solid fa-xmark"
+      @click="remove()"
+    />
   </div>
 </template>
 
 <style scoped>
 .card {
+  position: relative;
   display: flex;
   flex-direction: row;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -104,6 +125,16 @@ img {
 img:hover {
   filter: brightness(50%);
 }
+.remove {
+  position: absolute;
+  top: 5%;
+  right: 2%;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.remove:hover {
+  color: rgba(0, 0, 0, 0.2);
+}
 @media screen and (max-width: 800px) {
   .card {
     margin-right: 5%;
@@ -113,8 +144,15 @@ img:hover {
   img {
     min-width: 50%;
   }
-  .overflow {
-    min-width: 100%;
+  .fa-plus,
+  .fa-minus {
+    margin-left: 6%;
+    font-size: 1.3rem;
+  }
+  .remove {
+    font-size: 1.5rem;
+    top: 4%;
+    right: 4%;
   }
 }
 </style>

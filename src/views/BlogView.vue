@@ -1,31 +1,28 @@
 <script setup>
 import BlogArticleItem from "../components/BlogArticleItem.vue";
+import { useBlogStore } from "../stores/blog";
+
+const blog = useBlogStore();
 </script>
 
 <template>
-  <div>
+  <br />
+  <div v-for="article in blog.articles" :key="article.id">
     <BlogArticleItem
-      title="Dragon Well: Tea Of The Month"
-      img="green-tea-cat.jpg"
+      :title="article.title"
+      :content="article.content"
+      :image="article.image"
     />
-    <BlogArticleItem
-      title="Butterfly Pea: Tea Of The Month"
-      img="fruit-tea-cat.jpg"
-    />
-    <BlogArticleItem
-      title="Learn About Tea: Blending"
-      img="black-tea-cat.jpg"
-    />
-    <div class="pagination">
-      <a href="#">&laquo;</a>
-      <a href="#">1</a>
-      <a href="#">2</a>
-      <a href="#">3</a>
-      <a href="#">4</a>
-      <a href="#">5</a>
-      <a href="#">6</a>
-      <a href="#">&raquo;</a>
-    </div>
+  </div>
+  <div class="pagination">
+    <a href="#">&laquo;</a>
+    <a href="#">1</a>
+    <a href="#">2</a>
+    <a href="#">3</a>
+    <a href="#">4</a>
+    <a href="#">5</a>
+    <a href="#">6</a>
+    <a href="#">&raquo;</a>
   </div>
 </template>
 

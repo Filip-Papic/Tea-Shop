@@ -79,6 +79,9 @@ h3 {
 }
 
 @media (max-width: 768px) {
+  footer {
+    margin-top: 120%;
+  }
   footer > .container {
     display: block;
     text-align: center;

@@ -8,12 +8,16 @@ export const useCartStore = defineStore({
   getters: {
     getCartTotal: (store) => {
       return store.cart.reduce((total, item) => {
-        return total + item.price * item.quantity;
+        return (
+          Math.round(
+            (total + item.price * item.quantity + Number.EPSILON) * 100
+          ) / 100
+        );
       }, 0);
     },
     getCartQuantity: (store) => {
       return store.cart.reduce((total, item) => {
-        return total + item.quantity;
+        return total + parseInt(item.quantity);
       }, 0);
     },
   },
@@ -29,14 +33,10 @@ export const useCartStore = defineStore({
         });
       }
     },
-    removeFromCart(product) {
-      const item = this.cart.find((item) => item.id === product.id);
+    updateQuantity(id, quantity) {
+      const item = this.cart.find((item) => item.id === id);
       if (item) {
-        if (item.quantity > 1) {
-          item.quantity--;
-        } else {
-          this.cart = this.cart.filter((item) => item.id !== product.id);
-        }
+        item.quantity = quantity;
       }
     },
     increaseQuantity(product) {
@@ -54,6 +54,9 @@ export const useCartStore = defineStore({
           this.cart = this.cart.filter((item) => item.id !== product.id);
         }
       }
+    },
+    removeFromCart(product) {
+      this.cart = this.cart.filter((item) => item.id !== product.id);
     },
   },
   persist: true,

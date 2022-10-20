@@ -15,5 +15,10 @@ export const useProductsStore = defineStore({
     fetchProduct(id) {
       this.product = productsData.find((p) => p.id == id);
     },
+    searchProducts(search) {
+      this.products = productsData.filter((p) =>
+        p.name.toLowerCase().includes(search.toLowerCase())
+      );
+    },
   },
 });

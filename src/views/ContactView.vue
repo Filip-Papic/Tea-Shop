@@ -2,7 +2,17 @@
 import { ref } from "vue";
 
 const success = ref("hidden");
-console.log(success.value);
+
+const name = ref("");
+const email = ref("");
+const message = ref("");
+
+const send = () => {
+  name.value = "";
+  email.value = "";
+  message.value = "";
+  success.value = "visible";
+};
 </script>
 
 <template>
@@ -42,17 +52,17 @@ console.log(success.value);
       <form>
         <div class="form-group">
           <label for="name">Name</label>
-          <input type="text" id="name" />
+          <input type="text" id="name" v-model="name" />
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" id="email" />
+          <input type="email" id="email" v-model="email" />
         </div>
         <div class="form-group">
           <label for="message">Message</label>
-          <textarea id="message" rows="5"></textarea>
+          <textarea id="message" rows="5" v-model="message"></textarea>
         </div>
-        <button type="submit" @click.prevent="success = 'visible'">Send</button>
+        <button type="submit" @click.prevent="send()">Send</button>
         <p class="success"><i>Your message has been sent!</i></p>
       </form>
     </div>

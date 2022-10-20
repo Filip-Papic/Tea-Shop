@@ -5,6 +5,7 @@ import BlogView from "../views/BlogView.vue";
 import ContactView from "../views/ContactView.vue";
 import ProductView from "../views/ProductView.vue";
 import CartView from "../views/CartView.vue";
+import SearchView from "../views/SearchView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -38,6 +39,11 @@ const router = createRouter({
       path: "/contacts",
       name: "contacts",
       component: ContactView,
+    },
+    {
+      path: "/search",
+      name: "search",
+      component: SearchView,
     },
   ],
 });

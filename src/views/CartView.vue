@@ -3,6 +3,11 @@ import CartItem from "../components/CartItem.vue";
 import { useCartStore } from "../stores/cart";
 
 const cart = useCartStore();
+
+const inputQuantity = (e) => {
+  console.log(e);
+  cart.updateQuantity(e.id, e.quantity);
+};
 </script>
 
 <template>
@@ -15,6 +20,7 @@ const cart = useCartStore();
           @remove="cart.removeFromCart($event)"
           @increment="cart.increaseQuantity($event)"
           @decrement="cart.decreaseQuantity($event)"
+          @input-quantity="inputQuantity($event)"
         />
       </div>
     </div>

@@ -11,9 +11,9 @@ const id = route.params.id;
 
 const quantity = ref(1);
 const cartStore = useCartStore();
-function addToCart() {
+const addToCart = () => {
   cartStore.addToCart(product, quantity.value);
-}
+};
 
 const products = useProductsStore();
 products.fetchProduct(id);
@@ -165,6 +165,7 @@ const product = products.product;
   font-size: 2rem;
   font-weight: 600;
   margin: 0;
+  padding: 5%;
 }
 .product > .row > .column > .product-info > p {
   font-size: 1rem;
@@ -213,7 +214,7 @@ const product = products.product;
   align-items: center;
   flex-direction: column;
   width: 30%;
-  padding-top: 1%;
+  padding-top: 3%;
 }
 .product > .row > .column > .product-info > .product-add > button {
   width: 100%;
@@ -242,6 +243,10 @@ const product = products.product;
   }
   .product > .row > .column {
     width: 100%;
+  }
+  .product > .row > .column > .product-info > .product-add > button {
+    width: 10rem;
+    height: 4rem;
   }
 }
 </style>
