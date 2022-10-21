@@ -1,7 +1,6 @@
 <script setup>
-import { computed } from "vue";
 const props = defineProps({
-  img: {
+  image: {
     type: String,
     required: true,
   },
@@ -10,9 +9,6 @@ const props = defineProps({
     required: true,
   },
 });
-const imgSrc = computed(() => {
-  return new URL(`../assets/images/${props.img}`, import.meta.url);
-});
 </script>
 
 <template>
@@ -20,7 +16,7 @@ const imgSrc = computed(() => {
     <div class="row">
       <div class="overflow">
         <a href="/">
-          <img alt="Banner" :src="imgSrc" />
+          <img alt="Banner" :src="props.image" />
           <div class="text">
             <p>{{ props.title }}</p>
           </div>
@@ -31,27 +27,18 @@ const imgSrc = computed(() => {
 </template>
 
 <style scoped>
-.grid {
-  position: relative;
-}
 .grid > .row {
   display: flex;
   justify-content: center;
   position: relative;
   align-items: center;
 }
-.grid > .row > overflow > a {
-  display: flex;
-  justify-content: center;
-  position: relative;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-}
 img {
   transition: transform 0.8s ease;
-  height: 33vw;
-  width: 76vw;
+  max-height: 33vw;
+  max-width: 76vw;
+  width: auto;
+  height: auto;
 }
 img:hover {
   transform: scale(1.1);
@@ -77,10 +64,10 @@ img:hover {
   margin-left: auto;
   margin-right: auto;
 }
-
 @media (max-width: 768px) {
-  .grid > .row {
-    width: 100%;
+  img {
+    max-height: 100vw;
+    max-width: 100vw;
   }
   .text {
     width: 50%;

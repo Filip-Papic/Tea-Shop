@@ -1,10 +1,13 @@
 <script setup>
-import { ref } from "vue";
+import { ref, reactive } from "vue";
 import { useRoute } from "vue-router";
 import { useProductsStore } from "../stores/products";
 import { useCartStore } from "../stores/cart";
+import ImageModal from "../components/ImageModal.vue";
 
-const showModal = ref("none");
+const modals = reactive({
+  image: "none",
+});
 
 const route = useRoute();
 const id = route.params.id;
@@ -24,8 +27,8 @@ const product = products.product;
   <div class="product">
     <div class="row">
       <div class="column">
-        <div class="product-image" @click="showModal = 'block'">
-          <img :src="product.image" alt="Product" />
+        <div class="product-image" @click="modals.image = 'block'">
+          <img :src="product.image" :alt="product.name" />
         </div>
       </div>
       <div class="column">
@@ -48,15 +51,7 @@ const product = products.product;
       </div>
     </div>
   </div>
-  <div id="imageModal" class="modal">
-    <span class="close" @click="showModal = 'none'">&times;</span>
-    <img
-      class="modal-content"
-      id="img01"
-      src="../assets/images/products/green-tea-product.jpg"
-    />
-    <div id="caption"></div>
-  </div>
+  <ImageModal v-model="modals.image" :product="product" />
 </template>
 
 <style scoped>
@@ -91,67 +86,6 @@ const product = products.product;
 .product > .row > .column > .product-image > img {
   width: 100%;
   height: 100%;
-}
-.modal {
-  display: v-bind("showModal");
-  position: fixed;
-  z-index: 1;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.9);
-}
-.modal-content {
-  margin: auto;
-  display: block;
-  width: 80%;
-  max-width: 700px;
-}
-#caption {
-  margin: auto;
-  display: block;
-  width: 80%;
-  max-width: 700px;
-  text-align: center;
-  color: #ccc;
-  padding: 10px 0;
-  height: 150px;
-}
-.modal-content,
-#caption {
-  animation-name: zoom;
-  animation-duration: 0.6s;
-}
-@keyframes zoom {
-  from {
-    transform: scale(0);
-  }
-  to {
-    transform: scale(1);
-  }
-}
-.close {
-  position: absolute;
-  top: 15px;
-  right: 35px;
-  color: #f1f1f1;
-  font-size: 40px;
-  font-weight: bold;
-  transition: 0.3s;
-}
-.close:hover,
-.close:focus {
-  color: #bbb;
-  text-decoration: none;
-  cursor: pointer;
-}
-@media only screen and (max-width: 700px) {
-  .modal-content {
-    width: 100%;
-  }
 }
 .product > .row > .column > .product-info {
   font-family: "Roboto", sans-serif;
@@ -228,11 +162,9 @@ const product = products.product;
   font-weight: 400;
   cursor: pointer;
 }
-
 .product > .row > .column > .product-info > .product-add > button:hover {
   background-color: rgba(0, 0, 0, 0.508);
 }
-
 @media (max-width: 768px) {
   .product {
     margin-right: 5%;

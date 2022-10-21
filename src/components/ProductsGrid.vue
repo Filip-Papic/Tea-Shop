@@ -96,7 +96,8 @@ console.log(props.products.length);
     margin-left: 10px;
     margin-right: 10px;
   }
-  .columns {
+  .moreColumns,
+  .twoColumns {
     flex: 100%;
     max-width: 100%;
   }

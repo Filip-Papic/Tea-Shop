@@ -13,9 +13,14 @@ const props = defineProps({
       name: 'category',
       params: { id: props.category.id, name: props.category.name },
     }"
+    aria-label="category"
   >
     <div class="overflow">
-      <img :src="props.category.image" />
+      <img
+        :src="props.category.image"
+        :alt="props.category.name"
+        loading="lazy"
+      />
       <p class="text">{{ props.category.name }}</p>
     </div>
   </RouterLink>
@@ -28,7 +33,6 @@ img {
   transition: transform 0.8s ease;
   height: auto;
 }
-
 img:hover {
   transform: scale(1.1);
 }
@@ -37,7 +41,6 @@ img:hover {
   overflow: hidden;
   position: relative;
 }
-
 a {
   cursor: pointer;
 }

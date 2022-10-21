@@ -24,7 +24,11 @@ const addToCart = () => {
 <template>
   <div class="card" @click="singleProduct()">
     <div class="overflow">
-      <img :src="props.product.image" loading="lazy" />
+      <img
+        :src="props.product.image"
+        :alt="props.product.name"
+        loading="lazy"
+      />
     </div>
     <div class="container">
       <h4>
@@ -38,6 +42,7 @@ const addToCart = () => {
 
 <style scoped>
 .card {
+  font-family: "Roboto", sans-serif;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 21rem;
   border-radius: 5px;
@@ -67,7 +72,6 @@ const addToCart = () => {
   background-color: #555;
 }
 h4 {
-  font-family: "Roboto", sans-serif;
   font-size: 1.5rem;
   font-weight: 400;
   margin-bottom: 0.5rem;
@@ -82,7 +86,6 @@ h4 {
   padding-bottom: 1rem;
 }
 p {
-  font-family: "Roboto", sans-serif;
   font-size: 1rem;
   font-weight: 300;
   margin-bottom: 1rem;
@@ -93,7 +96,6 @@ img {
   transition: transform 0.8s ease;
   height: auto;
 }
-
 img:hover {
   transform: scale(1.1);
 }
@@ -102,7 +104,6 @@ img:hover {
   overflow: hidden;
   position: relative;
 }
-
 .overflow > a > .text {
   position: absolute;
   top: 25%;
@@ -111,7 +112,6 @@ img:hover {
   background-color: rgba(0, 0, 0, 0.738);
   color: #f2f2f2;
   font-size: 1.5rem;
-  font-family: "Roboto", sans-serif;
   padding: 1rem;
   text-align: center;
   z-index: 1;

@@ -15,16 +15,20 @@ app.use(router);
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faShoppingBag } from "@fortawesome/free-solid-svg-icons";
+import {
+  faShoppingBag,
+  faSearch,
+  faXmark,
+  faPlus,
+  faMinus,
+} from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
-import { faGooglePlus } from "@fortawesome/free-brands-svg-icons";
-import { faTwitter } from "@fortawesome/free-brands-svg-icons";
-import { faInstagram } from "@fortawesome/free-brands-svg-icons";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { faMinus } from "@fortawesome/free-solid-svg-icons";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import {
+  faFacebookF,
+  faInstagram,
+  faTwitter,
+  faGooglePlus,
+} from "@fortawesome/free-brands-svg-icons";
 library.add(
   faShoppingBag,
   faUser,

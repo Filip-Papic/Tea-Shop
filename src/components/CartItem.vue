@@ -38,7 +38,7 @@ const remove = () => {
 
 <template>
   <div class="card">
-    <img :src="props.product.image" loading="lazy" />
+    <img :src="props.product.image" :alt="props.product.name" loading="lazy" />
     <div class="container">
       <h4>
         <b>{{ props.product.name }}</b>
@@ -65,6 +65,7 @@ const remove = () => {
 
 <style scoped>
 .card {
+  font-family: "Montserrat", sans-serif;
   position: relative;
   display: flex;
   flex-direction: row;
@@ -82,19 +83,16 @@ const remove = () => {
   margin-left: 5%;
 }
 h4 {
-  font-family: "Montserrat", sans-serif;
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
 }
 p {
-  font-family: "Montserrat";
   font-size: 1.2rem;
   font-weight: 400;
   margin-bottom: 0.5rem;
 }
 h3 {
-  font-family: "Montserrat", sans-serif;
   font-size: 1rem;
   font-weight: 400;
   margin-bottom: 0.5rem;
@@ -103,7 +101,6 @@ input {
   border: 1px solid rgba(1, 1, 1, 0.453);
   border-radius: 4px;
   box-sizing: border-box;
-  font-family: "Montserrat", sans-serif;
   font-size: 1rem;
   font-weight: 400;
   margin-bottom: 0.5rem;
@@ -114,10 +111,6 @@ input {
   margin-left: 3%;
 }
 img {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
   max-width: 30%;
   min-width: 30%;
   overflow: hidden;

@@ -55,11 +55,20 @@ export const productsData = [
   },
   {
     id: 7,
-    name: "Rooibos Brekfast Loose Leaf",
+    name: "Rooibos Brekfast",
     price: 38.99,
     category: 6,
     image: "/src/assets/images/products/fruit-tea-product.jpg",
     description:
       "Newby’s caffeine-free Rooibos Breakfast blend is noted for its rich, nutty taste and sweet orange and mango aroma. From our loose leaf tea pouch range.",
+  },
+  {
+    id: 8,
+    name: "Huo Shan Huang Da Cha",
+    price: 49.99,
+    category: 4,
+    image: "/src/assets/images/products/yellow-tea-product.jpg",
+    description:
+      "Our Huo Shan Huang Da Cha is a rare and exquisite yellow tea from the Wuyi Mountains in China. This loose leaf tea is from our loose leaf tea pouch range.",
   },
 ];

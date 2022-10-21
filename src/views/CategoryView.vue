@@ -7,7 +7,6 @@ const route = useRoute();
 
 const products = useProductsStore();
 products.fetchProductsByCategory(route.params.id);
-console.log("fetched: " + products.products);
 </script>
 
 <template>

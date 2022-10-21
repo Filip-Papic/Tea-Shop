@@ -97,24 +97,9 @@ const checkout = () => {
   background-color: #000;
   color: #fff;
 }
-p {
-  display: flex;
-  justify-content: center;
-  font-family: "Montserrat", sans-serif;
-  font-size: 2rem;
-  font-weight: 600;
-  margin-bottom: 30.3rem;
-  margin-top: 2rem;
-  margin-right: 11.7%;
-  margin-left: 11.7%;
-}
 @media screen and (max-width: 768px) {
   .checkout {
     width: 100%;
-  }
-  p {
-    margin-bottom: 0;
-    margin-top: 0;
   }
 }
 </style>

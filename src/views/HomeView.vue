@@ -7,7 +7,10 @@ import CategoriesGrid from "../components/CategoriesGrid.vue";
   <main>
     <div class="banners">
       <div class="big">
-        <BannerItem img="banner.png" title="Live Naturally" />
+        <BannerItem
+          image="/src/assets/images/banner.png"
+          title="Live Naturally"
+        />
       </div>
     </div>
     <blockquote class="blockquote">
@@ -31,7 +34,6 @@ import CategoriesGrid from "../components/CategoriesGrid.vue";
   text-align: center;
 }
 .blockquote .quotemark {
-  font-family: "Utopia-italic";
   font-size: 300px;
   font-weight: 700px;
   position: absolute;

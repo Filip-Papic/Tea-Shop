@@ -19,6 +19,7 @@ const details = reactive({
 });
 const paymentType = ref("");
 const disabled = ref(true);
+const hint = ref("visible");
 
 const ordered = ref(false);
 const submitOrder = () => {
@@ -32,6 +33,7 @@ const submitOrder = () => {
   details.phone = "";
   paymentType.value = "";
   disabled.value = true;
+  hint.value = "visible";
   cart.clearCart();
   window.scrollTo(0, 0);
 };
@@ -132,7 +134,11 @@ const submitOrder = () => {
                   name="paymentMethod"
                   value="creditCard"
                   v-model="paymentType"
-                  @change="(paymentType = 'creditCard'), (disabled = false)"
+                  @change="
+                    (paymentType = 'creditCard'),
+                      (disabled = false),
+                      (hint = 'hidden')
+                  "
                 />
                 <label for="paymentMethod">
                   <img
@@ -158,21 +164,25 @@ const submitOrder = () => {
                   name="paymentMethod2"
                   value="paypal"
                   v-model="paymentType"
-                  @change="(paymentType = 'paypal'), (disabled = false)"
+                  @change="
+                    (paymentType = 'paypal'),
+                      (disabled = false),
+                      (hint = 'hidden')
+                  "
                 />
                 <label for="paymentMethod2"
                   ><img
                     src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_37x23.jpg"
                     alt="paypal"
                   />
-                  <h3>PayPal- !!!add payment procesors!!!</h3></label
+                  <h3>PayPal</h3></label
                 >
               </div>
               <br />
             </div>
           </div>
           <button :disabled="disabled" type="submit">Place Order</button>
-          <p v-if="disabled" class="hint">
+          <p class="hint">
             <i>Choose payment method first</i>
           </p>
         </form>
@@ -183,6 +193,11 @@ const submitOrder = () => {
 </template>
 
 <style scoped>
+.hint {
+  font-size: small;
+  color: #ff0000;
+  visibility: v-bind(hint);
+}
 .row {
   font-family: "Roboto", sans-serif;
   display: flex;
@@ -270,10 +285,6 @@ button:disabled:hover {
 button:hover {
   background-color: #fff;
   color: #000;
-}
-.hint {
-  font-size: small;
-  color: #ff0000;
 }
 .order-success {
   display: flex;

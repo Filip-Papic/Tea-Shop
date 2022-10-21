@@ -1,7 +1,8 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onUnmounted } from "vue";
 import { useCartStore } from "../stores/cart";
 import { useRouter } from "vue-router";
+import { vAutofocus } from "@/directives/vAutofocus";
 
 const route = useRouter();
 
@@ -11,6 +12,21 @@ const search = () => {
   searchFlag.value = true;
   route.push({ name: "search", query: { q: toSearch.value } });
 };
+
+const addListener = () => {
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      search();
+    }
+  });
+};
+onUnmounted(() => {
+  document.removeEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      search();
+    }
+  });
+});
 
 const cartStore = useCartStore();
 </script>
@@ -26,14 +42,15 @@ const cartStore = useCartStore();
       </label>
     </div>
     <div class="items">
-      <RouterLink to="/shop">SHOP</RouterLink>
-      <RouterLink to="/blog">BLOG</RouterLink>
-      <RouterLink to="/contacts">CONTACTS</RouterLink>
+      <RouterLink to="/shop" aria-label="Shop">SHOP</RouterLink>
+      <RouterLink to="/blog" aria-label="Blog">BLOG</RouterLink>
+      <RouterLink to="/contacts" aria-label="Contacts">CONTACTS</RouterLink>
     </div>
-    <a href="/">
+    <RouterLink :to="{ name: 'home' }" aria-label="Home">
       <img src="..\assets\images\logo.png" alt="logo" />
-    </a>
+    </RouterLink>
     <div class="items-right">
+      <!-- for desktop -->
       <transition name="slide-fade">
         <input
           v-if="searchFlag"
@@ -41,33 +58,18 @@ const cartStore = useCartStore();
           placeholder="Type & hit enter..."
           id="searchBig"
           v-model="toSearch"
+          v-autofocus
         />
       </transition>
-      <input
-        type="text"
-        placeholder="Type & hit enter..."
-        id="search"
-        v-model="toSearch"
-      />
-
-      <!-- for mobile -->
-      <font-awesome-icon
-        icon="fa-solid fa-magnifying-glass"
-        id="searchIcon"
-        @click="searchFlag === true, search()"
-      >
-      </font-awesome-icon>
-      <!-- -->
-
-      <!-- for desktop -->
       <font-awesome-icon
         v-if="(!searchFlag, toSearch === '')"
         icon="fa-solid fa-magnifying-glass"
-        @click="(searchFlag = !searchFlag), (toSearch = '')"
+        @click="(searchFlag = !searchFlag), (toSearch = ''), addListener()"
       />
       <RouterLink
         v-if="(searchFlag, toSearch !== '')"
         :to="{ name: 'search', query: { q: toSearch } }"
+        aria-label="Search"
       >
         <font-awesome-icon
           icon="fa-solid fa-magnifying-glass"
@@ -76,11 +78,26 @@ const cartStore = useCartStore();
       </RouterLink>
       <!-- -->
 
-      <RouterLink to="/profile"
-        ><font-awesome-icon icon="fa-regular fa-user" />
+      <!-- for mobile -->
+      <input
+        type="text"
+        placeholder="Type & hit enter..."
+        id="search"
+        v-model="toSearch"
+      />
+      <font-awesome-icon
+        icon="fa-solid fa-magnifying-glass"
+        id="searchIcon"
+        @click="searchFlag === true, search()"
+      >
+      </font-awesome-icon>
+      <!-- -->
+
+      <RouterLink to="/profile" aria-label="profile">
+        <font-awesome-icon icon="fa-regular fa-user" />
       </RouterLink>
-      <RouterLink to="/cart"
-        ><font-awesome-icon icon="fa-solid fa-bag-shopping" />
+      <RouterLink to="/cart" aria-label="cart">
+        <font-awesome-icon icon="fa-solid fa-bag-shopping" />
         <span class="badge">{{ cartStore.getCartQuantity }}</span>
       </RouterLink>
     </div>
@@ -118,6 +135,108 @@ nav > .items-right > #search {
 }
 nav > .items-right > #searchIcon {
   display: none;
+}
+
+img {
+  max-width: 2.8em;
+  max-height: 3em;
+  width: auto;
+  height: auto;
+}
+
+.fa-magnifying-glass,
+.fa-user,
+.fa-bag-shopping {
+  font-size: 1em;
+  margin: 0 0.5em;
+  color: rgba(0, 0, 0, 0.632);
+  padding: 0.4rem;
+}
+
+.fa-magnifying-glass:hover,
+.fa-user:hover,
+.fa-bag-shopping:hover {
+  color: rgba(0, 0, 0, 0.458);
+}
+#searchBig {
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.19);
+  font-family: "Josefin Sans";
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.582);
+  animation: 1s fadeIn;
+  animation-fill-mode: forwards;
+}
+#searchBig:focus {
+  outline: none;
+}
+.badge {
+  top: 1rem;
+  right: 1rem;
+  background-color: #000;
+  color: #fff;
+  border-radius: 50%;
+  width: 1.2rem;
+  height: 1.2rem;
+  display: flex;
+  margin-top: -33px;
+  margin-left: 20px;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: 400;
+  font-family: "Roboto";
+}
+.items-right {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 2rem;
+  margin-top: 1.7rem;
+  padding: 1.4rem;
+  width: 100%;
+}
+.items {
+  margin-bottom: 2rem;
+  margin-top: 1.7rem;
+  padding: 1rem;
+  width: 100%;
+}
+.items a {
+  color: rgba(0, 0, 0, 0.632);
+  text-decoration: none;
+  margin-right: 1.2rem;
+  font-weight: 500;
+  font-size: 0.8rem;
+  line-height: 1rem;
+  font-family: "Mukta", sans-serif;
+}
+.items a {
+  display: inline-block;
+  position: relative;
+  padding: 0.2em 0;
+}
+.items a:hover {
+  color: rgba(0, 0, 0, 0.458);
+}
+.items a::after {
+  content: "";
+  position: absolute;
+  top: 2.5em;
+  left: 0;
+  width: 100%;
+  height: 0.1em;
+  background-color: rgb(0, 0, 0);
+  opacity: 0;
+  transition: opacity 300ms, transform 300ms;
+}
+.items a::after {
+  opacity: 1;
+  transform: scale(0);
+  transform-origin: center;
+}
+.items a:hover::after,
+a:focus::after {
+  transform: scale(1.2);
 }
 @media (max-width: 700px) {
   nav {
@@ -158,11 +277,10 @@ nav > .items-right > #searchIcon {
     position: absolute;
     display: block;
     width: 100%;
-    height: 0px;
+    max-height: 10rem;
     transition: height 1s ease;
     overflow-y: hidden;
     top: 50px;
-    margin-left: -20px;
     margin-right: 2vw;
     background-color: #fff;
     z-index: 1;
@@ -226,113 +344,5 @@ nav > .items-right > #searchIcon {
   #searchBig {
     display: none;
   }
-}
-
-img {
-  width: 2.8em;
-  height: 3em;
-}
-
-.fa-magnifying-glass,
-.fa-user,
-.fa-bag-shopping {
-  font-size: 1em;
-  margin: 0 0.5em;
-  color: rgba(0, 0, 0, 0.632);
-  padding: 0.4rem;
-}
-
-.fa-magnifying-glass:hover,
-.fa-user:hover,
-.fa-bag-shopping:hover {
-  color: rgba(0, 0, 0, 0.458);
-}
-#searchBig {
-  border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.19);
-  font-family: "Josefin Sans";
-  font-size: 1rem;
-  color: rgba(0, 0, 0, 0.582);
-  animation: 1s fadeIn;
-  animation-fill-mode: forwards;
-}
-#searchBig:focus {
-  outline: none;
-}
-.badge {
-  top: 1rem;
-  right: 1rem;
-  background-color: #000;
-  color: #fff;
-  border-radius: 50%;
-  width: 1.2rem;
-  height: 1.2rem;
-  display: flex;
-  margin-top: -33px;
-  margin-left: 20px;
-  justify-content: center;
-  align-items: center;
-  font-size: 0.8rem;
-  font-weight: 400;
-  font-family: "Roboto";
-}
-
-.items-right {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 2rem;
-  margin-top: 1.7rem;
-  padding: 1.4rem;
-  width: 100%;
-}
-
-.items {
-  margin-bottom: 2rem;
-  margin-top: 1.7rem;
-  padding: 1rem;
-  width: 100%;
-}
-
-.items a {
-  color: rgba(0, 0, 0, 0.632);
-  text-decoration: none;
-  margin-right: 1.2rem;
-  font-weight: 500;
-  font-size: 0.8rem;
-  line-height: 1rem;
-  font-family: "Mukta", sans-serif;
-}
-
-.items a {
-  display: inline-block;
-  position: relative;
-  padding: 0.2em 0;
-}
-
-.items a:hover {
-  color: rgba(0, 0, 0, 0.458);
-}
-
-.items a::after {
-  content: "";
-  position: absolute;
-  top: 2.5em;
-  left: 0;
-  width: 100%;
-  height: 0.1em;
-  background-color: rgb(0, 0, 0);
-  opacity: 0;
-  transition: opacity 300ms, transform 300ms;
-}
-
-.items a::after {
-  opacity: 1;
-  transform: scale(0);
-  transform-origin: center;
-}
-
-.items a:hover::after,
-a:focus::after {
-  transform: scale(1.2);
 }
 </style>

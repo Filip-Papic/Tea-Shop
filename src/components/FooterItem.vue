@@ -5,9 +5,9 @@
     <div class="container">
       <div class="footer-left">
         <h3 class="copy">All rights reserved. © 2022</h3>
-        <RouterLink to="/shop">Shop</RouterLink>
-        <RouterLink to="/blog">Blog</RouterLink>
-        <RouterLink to="/contacts">Contacts</RouterLink>
+        <RouterLink to="/shop" aria-label="Shop">Shop</RouterLink>
+        <RouterLink to="/blog" aria-label="Blog">Blog</RouterLink>
+        <RouterLink to="/contacts" aria-label="Contacts">Contacts</RouterLink>
       </div>
       <div class="footer-right">
         <font-awesome-icon icon="fa-brands fa-facebook-f" />
@@ -21,7 +21,6 @@
 
 <style scoped>
 footer {
-  position: relative;
   height: 6.5rem;
   left: 0;
   bottom: 0;
@@ -58,7 +57,7 @@ footer > .container > .footer-left > a {
 }
 h3 {
   font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.312);
+  color: rgba(255, 255, 255, 0.615);
   padding-right: 1rem;
   font-weight: 100;
 }
@@ -77,7 +76,6 @@ h3 {
 .fa-instagram:hover {
   color: rgba(255, 255, 255, 0.458);
 }
-
 @media (max-width: 768px) {
   footer {
     margin-top: 120%;

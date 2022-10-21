@@ -37,13 +37,11 @@ categories.fetchCategories();
   margin-right: 11.4rem;
   grid-gap: 1rem;
 }
-
 .column {
   flex: 30%;
   max-width: 33%;
   padding: 0 5px;
 }
-
 @media screen and (max-width: 800px) {
   .row {
     margin-left: 10px;
@@ -54,7 +52,6 @@ categories.fetchCategories();
     max-width: 50%;
   }
 }
-
 @media screen and (max-width: 600px) {
   .column {
     flex: 100%;
