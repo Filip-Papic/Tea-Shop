@@ -7,18 +7,36 @@ const props = defineProps({
     required: true,
   },
 });
+console.log(props.products.length);
 </script>
 
 <template>
   <div class="container">
-    <div class="row" v-if="products.length > 1">
-      <div class="column" v-for="product in props.products" :key="product.id">
+    <div v-if="props.products.length === 1" class="row">
+      <div
+        class="oneColumn"
+        v-for="product in props.products"
+        :key="product.id"
+      >
         <ProductGridItem :product="product" />
       </div>
     </div>
-    <div v-else class="row">
-      <div class="oneColumn">
-        <ProductGridItem :product="props.products[0]" />
+    <div v-else-if="props.products.length === 2" class="row">
+      <div
+        class="twoColumns"
+        v-for="product in props.products"
+        :key="product.id"
+      >
+        <ProductGridItem :product="product" />
+      </div>
+    </div>
+    <div class="row" v-else>
+      <div
+        class="moreColumns"
+        v-for="product in props.products"
+        :key="product.id"
+      >
+        <ProductGridItem :product="product" />
       </div>
     </div>
   </div>
@@ -58,32 +76,27 @@ const props = defineProps({
   margin-right: 11.4rem;
   grid-gap: 1rem;
 }
-
-.column {
-  flex: 30%;
-  max-width: 33%;
-  padding: 0 5px;
-}
-
 .oneColumn {
   flex: 100%;
   max-width: 100%;
   padding: 0 5px;
 }
-
+.twoColumns {
+  flex: 50%;
+  max-width: 48%;
+  padding: 0 5px;
+}
+.moreColumns {
+  flex: 30%;
+  max-width: 33%;
+  padding: 0 5px;
+}
 @media screen and (max-width: 800px) {
   .row {
     margin-left: 10px;
     margin-right: 10px;
   }
-  .column {
-    flex: 50%;
-    max-width: 50%;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .column {
+  .columns {
     flex: 100%;
     max-width: 100%;
   }

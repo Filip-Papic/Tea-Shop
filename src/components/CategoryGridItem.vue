@@ -1,23 +1,24 @@
 <script setup>
 const props = defineProps({
-  image: {
-    type: String,
-    required: true,
-  },
-  title: {
-    type: String,
+  category: {
+    type: Object,
     required: true,
   },
 });
 </script>
 
 <template>
-  <div class="overflow">
-    <a href="">
-      <img :src="props.image" />
-      <p class="text">{{ props.title }}</p>
-    </a>
-  </div>
+  <RouterLink
+    :to="{
+      name: 'category',
+      params: { id: props.category.id, name: props.category.name },
+    }"
+  >
+    <div class="overflow">
+      <img :src="props.category.image" />
+      <p class="text">{{ props.category.name }}</p>
+    </div>
+  </RouterLink>
 </template>
 
 <style scoped>
@@ -37,7 +38,10 @@ img:hover {
   position: relative;
 }
 
-.overflow > a > .text {
+a {
+  cursor: pointer;
+}
+.overflow > .text {
   position: absolute;
   top: 25%;
   left: 25%;

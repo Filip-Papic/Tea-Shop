@@ -10,7 +10,7 @@ categories.fetchCategories();
   <div class="container">
     <div class="row">
       <div class="column" v-for="cat in categories.categories" :key="cat.id">
-        <CategoryGridItem :image="cat.image" :title="cat.name" />
+        <CategoryGridItem :category="cat" />
       </div>
     </div>
   </div>

@@ -49,20 +49,20 @@ const send = () => {
     </div>
     <div class="message">
       <h3>Send us a message</h3>
-      <form>
+      <form @submit.prevent="send">
         <div class="form-group">
           <label for="name">Name</label>
-          <input type="text" id="name" v-model="name" />
+          <input type="text" id="name" v-model="name" required />
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" id="email" v-model="email" />
+          <input type="email" id="email" v-model="email" required />
         </div>
         <div class="form-group">
           <label for="message">Message</label>
-          <textarea id="message" rows="5" v-model="message"></textarea>
+          <textarea id="message" rows="5" v-model="message" required></textarea>
         </div>
-        <button type="submit" @click.prevent="send()">Send</button>
+        <button type="submit">Send</button>
         <p class="success"><i>Your message has been sent!</i></p>
       </form>
     </div>

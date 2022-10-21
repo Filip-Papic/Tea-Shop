@@ -76,7 +76,7 @@ const cartStore = useCartStore();
       </RouterLink>
       <!-- -->
 
-      <RouterLink to="/"
+      <RouterLink to="/profile"
         ><font-awesome-icon icon="fa-regular fa-user" />
       </RouterLink>
       <RouterLink to="/cart"
