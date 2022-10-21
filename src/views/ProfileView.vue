@@ -1,16 +1,55 @@
+<script setup>
+import { reactive } from "vue";
+import { useRouter } from "vue-router";
+import { useVuelidate } from "@vuelidate/core";
+import { required, email } from "@vuelidate/validators";
+
+const router = useRouter();
+
+const credentials = reactive({
+  email: "",
+  password: "",
+});
+
+const rules = {
+  email: { required, email },
+  password: { required },
+};
+const v$ = useVuelidate(rules, credentials);
+
+const login = async () => {
+  const isFormValid = await v$.value.$validate();
+  if (!isFormValid) {
+    return;
+  }
+  router.push({ name: "home" });
+};
+</script>
+
 <template>
   <div class="container">
     <div class="login-register">
-      <form>
+      <form @submit.prevent="login">
         <div class="form-group">
           <h1>Login</h1>
-          <input type="email" id="email" placeholder="Email" required />
           <input
+            v-model="credentials.email"
+            type="text"
+            id="email"
+            placeholder="Email"
+          />
+          <span v-if="v$.email.$error">
+            {{ v$.email.$errors[0].$message }}
+          </span>
+          <input
+            v-model="credentials.password"
             type="password"
             id="password"
             placeholder="Password"
-            required
           />
+          <span v-if="v$.password.$error">
+            {{ v$.password.$errors[0].$message }}
+          </span>
           <h6>
             <input type="checkbox" id="remember" />
             <label for="remember">Remember me</label>
@@ -90,6 +129,14 @@ form {
   top: -1px;
   *overflow: hidden;
   accent-color: #000;
+}
+span {
+  color: red;
+  margin-top: -0.9rem;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 2px;
+  font-size: 0.8rem;
 }
 @media (max-width: 768px) {
   .login-register {

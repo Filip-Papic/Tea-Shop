@@ -1,6 +1,14 @@
 <script setup>
-import { ref, reactive } from "vue";
+import { ref, reactive, computed } from "vue";
 import { useRouter } from "vue-router";
+import { useVuelidate } from "@vuelidate/core";
+import {
+  required,
+  email,
+  minLength,
+  maxLength,
+  numeric,
+} from "@vuelidate/validators";
 import CheckoutItem from "../components/CheckoutItem.vue";
 import { useCartStore } from "../stores/cart";
 
@@ -17,12 +25,30 @@ const details = reactive({
   zip: "",
   phone: "",
 });
+
 const paymentType = ref("");
 const disabled = ref(true);
 const hint = ref("visible");
 
+const rules = computed(() => {
+  return {
+    name: { required, minLength: minLength(3), maxLength: maxLength(20) },
+    email: { required, email },
+    address: { required, minLength: minLength(3), maxLength: maxLength(50) },
+    city: { required, minLength: minLength(3), maxLength: maxLength(20) },
+    country: { required, minLength: minLength(3), maxLength: maxLength(20) },
+    zip: { required, numeric, minLength: minLength(3) },
+    phone: { required, numeric, minLength: minLength(5) },
+  };
+});
+const v$ = useVuelidate(rules, details);
+
 const ordered = ref(false);
-const submitOrder = () => {
+const submitOrder = async () => {
+  const isFormValid = await v$.value.$validate();
+  if (!isFormValid) {
+    return;
+  }
   ordered.value = true;
   details.name = "";
   details.email = "";
@@ -59,19 +85,23 @@ const submitOrder = () => {
               type="text"
               id="name"
               placeholder="Enter your name"
-              required
               v-model="details.name"
             />
+            <span v-if="v$.name.$error">
+              {{ v$.name.$errors[0].$message }}
+            </span>
           </div>
           <div class="form-group">
             <h3 for="email">Email *</h3>
             <input
-              type="email"
+              type="text"
               id="email"
               placeholder="Enter your email"
-              required
               v-model="details.email"
             />
+            <span v-if="v$.email.$error">
+              {{ v$.email.$errors[0].$message }}
+            </span>
           </div>
           <div class="form-group">
             <h3 for="address">Address *</h3>
@@ -79,9 +109,11 @@ const submitOrder = () => {
               type="text"
               id="address"
               placeholder="Enter your address"
-              required
               v-model="details.address"
             />
+            <span v-if="v$.address.$error">
+              {{ v$.address.$errors[0].$message }}
+            </span>
           </div>
           <div class="form-group">
             <h3 for="city">City *</h3>
@@ -89,9 +121,11 @@ const submitOrder = () => {
               type="text"
               id="city"
               placeholder="Enter your city"
-              required
               v-model="details.city"
             />
+            <span v-if="v$.city.$error">
+              {{ v$.city.$errors[0].$message }}
+            </span>
           </div>
           <div class="form-group">
             <h3 for="state">Country *</h3>
@@ -99,9 +133,11 @@ const submitOrder = () => {
               type="text"
               id="country"
               placeholder="Enter your country"
-              required
               v-model="details.country"
             />
+            <span v-if="v$.country.$error">
+              {{ v$.country.$errors[0].$message }}
+            </span>
           </div>
           <div class="form-group">
             <h3 for="zip">Zip *</h3>
@@ -109,9 +145,11 @@ const submitOrder = () => {
               type="text"
               id="zip"
               placeholder="Enter your zip"
-              required
               v-model="details.zip"
             />
+            <span v-if="v$.zip.$error">
+              {{ v$.zip.$errors[0].$message }}
+            </span>
           </div>
           <div class="form-group">
             <h3 for="text">Phone Number *</h3>
@@ -119,9 +157,11 @@ const submitOrder = () => {
               type="text"
               id="Phone Number"
               placeholder="Enter your phone number"
-              required
               v-model="details.phone"
             />
+            <span v-if="v$.phone.$error">
+              {{ v$.phone.$errors[0].$message }}
+            </span>
           </div>
           <div class="form-group">
             <div class="payment">
@@ -193,11 +233,6 @@ const submitOrder = () => {
 </template>
 
 <style scoped>
-.hint {
-  font-size: small;
-  color: #ff0000;
-  visibility: v-bind(hint);
-}
 .row {
   font-family: "Roboto", sans-serif;
   display: flex;
@@ -319,6 +354,16 @@ button:hover {
 .order-success button:hover {
   background-color: #fff;
   color: #000;
+}
+span {
+  color: red;
+  font-size: small;
+  padding-top: 5px;
+}
+.hint {
+  font-size: small;
+  color: #ff0000;
+  visibility: v-bind(hint);
 }
 @media (max-width: 768px) {
   .row {
