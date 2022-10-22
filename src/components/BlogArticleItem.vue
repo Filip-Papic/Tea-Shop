@@ -18,7 +18,7 @@ const props = defineProps({
 <template>
   <div class="card">
     <div class="overflow">
-      <img :src="$image(props.image)" :alt="props.title" loading="lazy" />
+      <img :src="props.image" :alt="props.title" loading="lazy" />
     </div>
     <div class="container">
       <h4>

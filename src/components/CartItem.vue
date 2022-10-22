@@ -38,11 +38,7 @@ const remove = () => {
 
 <template>
   <div class="card">
-    <img
-      :src="$image(props.product.image)"
-      :alt="props.product.name"
-      loading="lazy"
-    />
+    <img :src="props.product.image" :alt="props.product.name" loading="lazy" />
     <div class="container">
       <h4>
         <b>{{ props.product.name }}</b>

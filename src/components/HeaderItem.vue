@@ -47,7 +47,7 @@ const cartStore = useCartStore();
       <RouterLink to="/contacts" aria-label="Contacts">CONTACTS</RouterLink>
     </div>
     <RouterLink :to="{ name: 'home' }" aria-label="Home">
-      <img src="..\assets\images\logo.png" alt="logo" />
+      <img src="\images\logo.png" alt="logo" />
     </RouterLink>
     <div class="items-right">
       <!-- for desktop -->

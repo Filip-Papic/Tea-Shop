@@ -127,7 +127,7 @@ form {
   vertical-align: middle;
   position: relative;
   top: -1px;
-  *overflow: hidden;
+  overflow: hidden;
   accent-color: #000;
 }
 span {

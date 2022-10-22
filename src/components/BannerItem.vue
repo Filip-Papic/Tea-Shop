@@ -16,7 +16,7 @@ const props = defineProps({
     <div class="row">
       <div class="overflow">
         <a href="/">
-          <img alt="Banner" :src="$image(props.image)" />
+          <img alt="Banner" :src="props.image" />
           <div class="text">
             <p>{{ props.title }}</p>
           </div>

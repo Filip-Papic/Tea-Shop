@@ -25,7 +25,7 @@ const addToCart = () => {
   <div class="card" @click="singleProduct()">
     <div class="overflow">
       <img
-        :src="$image(props.product.image)"
+        :src="props.product.image"
         :alt="props.product.name"
         loading="lazy"
       />
