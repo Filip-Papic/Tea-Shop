@@ -54,6 +54,9 @@ const router = createRouter({
       path: "/category/:id/:name",
       name: "category",
       component: CategoryView,
+      meta: {
+        enterClass: "animate__animated animate__fadeIn",
+      },
     },
     {
       path: "/search",

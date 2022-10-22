@@ -17,7 +17,7 @@ const props = defineProps({
   >
     <div class="overflow">
       <img
-        :src="props.category.image"
+        :src="$image(props.category.image)"
         :alt="props.category.name"
         loading="lazy"
       />

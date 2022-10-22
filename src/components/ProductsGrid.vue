@@ -7,7 +7,6 @@ const props = defineProps({
     required: true,
   },
 });
-console.log(props.products.length);
 </script>
 
 <template>

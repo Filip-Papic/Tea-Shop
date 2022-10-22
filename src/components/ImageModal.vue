@@ -40,7 +40,7 @@ const closeModal = () => {
     <img
       class="modal-content"
       id="img01"
-      :src="props.product.image"
+      :src="$image(props.product.image)"
       :alt="props.product.name"
       v-on-click-outside="closeModal"
     />

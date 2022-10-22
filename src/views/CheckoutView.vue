@@ -331,7 +331,8 @@ button:hover {
   height: 100%;
   width: 100%;
   border: 1px solid #000000;
-  padding: 2%;
+  padding-bottom: 2%;
+  padding-top: 2%;
   margin-bottom: 2%;
 }
 .order-success h1 {

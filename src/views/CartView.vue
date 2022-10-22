@@ -6,7 +6,6 @@ import { useCartStore } from "../stores/cart";
 const cart = useCartStore();
 
 const inputQuantity = (e) => {
-  console.log(e);
   cart.updateQuantity(e.id, e.quantity);
 };
 </script>

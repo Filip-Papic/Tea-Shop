@@ -13,6 +13,11 @@ const app = createApp(App);
 app.use(pinia);
 app.use(router);
 
+const useImage = (url) => {
+  return new URL(`/src/assets${url}`, import.meta.url).href;
+};
+app.config.globalProperties.$image = useImage;
+
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import {

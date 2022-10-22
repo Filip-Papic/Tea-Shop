@@ -38,7 +38,11 @@ const remove = () => {
 
 <template>
   <div class="card">
-    <img :src="props.product.image" :alt="props.product.name" loading="lazy" />
+    <img
+      :src="$image(props.product.image)"
+      :alt="props.product.name"
+      loading="lazy"
+    />
     <div class="container">
       <h4>
         <b>{{ props.product.name }}</b>
@@ -126,6 +130,10 @@ img:hover {
   cursor: pointer;
 }
 .remove:hover {
+  color: rgba(0, 0, 0, 0.2);
+}
+.fa-minus:hover,
+.fa-plus:hover {
   color: rgba(0, 0, 0, 0.2);
 }
 @media screen and (max-width: 800px) {

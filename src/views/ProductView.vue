@@ -28,7 +28,7 @@ const product = products.product;
     <div class="row">
       <div class="column">
         <div class="product-image" @click="modals.image = 'block'">
-          <img :src="product.image" :alt="product.name" />
+          <img :src="$image(product.image)" :alt="product.name" />
         </div>
       </div>
       <div class="column">

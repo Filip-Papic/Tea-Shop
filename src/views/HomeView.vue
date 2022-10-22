@@ -7,10 +7,7 @@ import CategoriesGrid from "../components/CategoriesGrid.vue";
   <main>
     <div class="banners">
       <div class="big">
-        <BannerItem
-          image="/src/assets/images/banner.png"
-          title="Live Naturally"
-        />
+        <BannerItem image="/images/banner.png" title="Live Naturally" />
       </div>
     </div>
     <blockquote class="blockquote">
