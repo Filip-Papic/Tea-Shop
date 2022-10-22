@@ -1,6 +1,6 @@
 # Tea shop
 
-Responsive website for a tea shop using Vue3, Vue Router, Pinia, Vite, Vualidate, pure CSS...
+Responsive website for a tea shop using Vue3, Vue Router, Pinia, Vite, Vuelidate, pure CSS...
 
 
 This template should help get you started developing with Vue 3 in Vite.
