@@ -17,11 +17,33 @@ const router = createRouter({
       path: "/",
       name: "home",
       component: HomeView,
+      meta: {
+        enterClass: "animate__animated animate__fadeIn",
+      },
     },
     {
       path: "/shop",
       name: "shop",
       component: ShopView,
+      meta: {
+        enterClass: "animate__animated animate__fadeIn",
+      },
+    },
+    {
+      path: "/blog",
+      name: "blog",
+      component: BlogView,
+      meta: {
+        enterClass: "animate__animated animate__fadeIn",
+      },
+    },
+    {
+      path: "/contacts",
+      name: "contacts",
+      component: ContactView,
+      meta: {
+        enterClass: "animate__animated animate__fadeIn",
+      },
     },
     {
       path: "/product/:id/:name",
@@ -37,26 +59,27 @@ const router = createRouter({
       path: "/search",
       name: "search",
       component: SearchView,
+      meta: {
+        enterClass: "animate__animated animate__fadeIn",
+      },
     },
     {
       path: "/cart",
       name: "cart",
       component: CartView,
+      meta: {
+        enterClass: "animate__animated animate__fadeInLeft animate__faster",
+        leaveClass: "animate__animated animate__fadeOutRight animate__faster",
+      },
     },
     {
       path: "/checkout",
       name: "checkout",
       component: CheckoutView,
-    },
-    {
-      path: "/blog",
-      name: "blog",
-      component: BlogView,
-    },
-    {
-      path: "/contacts",
-      name: "contacts",
-      component: ContactView,
+      meta: {
+        enterClass: "animate__animated animate__fadeInRight animate__faster",
+        leaveClass: "animate__animated animate__fadeOutLeft animate__faster",
+      },
     },
     {
       path: "/profile",

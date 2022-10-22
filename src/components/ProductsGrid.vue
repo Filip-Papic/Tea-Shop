@@ -54,18 +54,6 @@ console.log(props.products.length);
   height: 100%;
   width: 100%;
   margin-top: -2rem;
-  animation: 1s fadeIn;
-  animation-fill-mode: forwards;
-  visibility: hidden;
-}
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-    visibility: visible;
-  }
 }
 .row {
   margin-top: 4rem;

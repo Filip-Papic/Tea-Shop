@@ -12,7 +12,9 @@ productStore.searchProducts(route.currentRoute.value.query.q);
 watch(
   () => route.currentRoute.value.query.q,
   (newQuery) => {
-    productStore.searchProducts(newQuery);
+    if (newQuery !== undefined) {
+      productStore.searchProducts(newQuery);
+    }
   }
 );
 </script>

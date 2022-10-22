@@ -37,7 +37,7 @@ const checkout = () => {
       <h3>
         Order total:
         <h3 v-if="cart.getCartTotal > 100">${{ cart.getCartTotal }}</h3>
-        <h3 v-else>${{ cart.getCartTotal + 10 }}</h3>
+        <h3 v-else>${{ cart.getCartTotalWithShipping }}</h3>
       </h3>
       <h1><hr /></h1>
       <button v-if="props.checkout" @click="checkout()">Go to checkout</button>
@@ -56,7 +56,7 @@ const checkout = () => {
   background-color: #f2f2f2;
   border: 1px solid #000;
   margin-top: 1.4%;
-  max-height: 33rem;
+  max-height: 31.5rem;
   max-width: 26.1rem;
 }
 .checkout-container {

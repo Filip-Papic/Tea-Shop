@@ -6,23 +6,25 @@ const blog = useBlogStore();
 </script>
 
 <template>
-  <br />
-  <div v-for="article in blog.articles" :key="article.id">
-    <BlogArticleItem
-      :title="article.title"
-      :content="article.content"
-      :image="article.image"
-    />
-  </div>
-  <div class="pagination">
-    <a href="#">&laquo;</a>
-    <a href="#">1</a>
-    <a href="#">2</a>
-    <a href="#">3</a>
-    <a href="#">4</a>
-    <a href="#">5</a>
-    <a href="#">6</a>
-    <a href="#">&raquo;</a>
+  <div>
+    <br />
+    <div v-for="article in blog.articles" :key="article.id">
+      <BlogArticleItem
+        :title="article.title"
+        :content="article.content"
+        :image="article.image"
+      />
+    </div>
+    <div class="pagination">
+      <a href="#">&laquo;</a>
+      <a href="#">1</a>
+      <a href="#">2</a>
+      <a href="#">3</a>
+      <a href="#">4</a>
+      <a href="#">5</a>
+      <a href="#">6</a>
+      <a href="#">&raquo;</a>
+    </div>
   </div>
 </template>
 

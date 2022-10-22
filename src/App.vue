@@ -5,12 +5,30 @@ import FooterItem from "./components/FooterItem.vue";
 <template>
   <div class="app">
     <HeaderItem />
-    <RouterView />
+    <RouterView v-slot="{ Component, route }">
+      <transition
+        :enter-active-class="route.meta.enterClass"
+        :leave-active-class="route.meta.leaveClass"
+        mode="out-in"
+      >
+        <component :is="Component" />
+      </transition>
+    </RouterView>
     <FooterItem />
   </div>
 </template>
 
 <style>
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease-out;
+}
+
 html {
   scroll-behavior: smooth;
 }

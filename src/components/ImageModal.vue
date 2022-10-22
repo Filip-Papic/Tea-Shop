@@ -19,6 +19,7 @@ const handleKeyboard = (e) => {
     closeModal();
   }
 };
+
 onMounted(() => {
   document.addEventListener("keydown", handleKeyboard);
 });

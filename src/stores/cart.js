@@ -15,6 +15,15 @@ export const useCartStore = defineStore({
         );
       }, 0);
     },
+    getCartTotalWithShipping: (store) => {
+      return store.cart.reduce((total, item) => {
+        return (
+          Math.round(
+            (total + item.price * item.quantity + 10 + Number.EPSILON) * 100
+          ) / 100
+        );
+      }, 0);
+    },
     getCartQuantity: (store) => {
       return store.cart.reduce((total, item) => {
         return total + parseInt(item.quantity);

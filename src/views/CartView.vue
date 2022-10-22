@@ -35,6 +35,7 @@ const inputQuantity = (e) => {
   flex-direction: row;
   margin-left: 11.7%;
   margin-right: 11.7%;
+  margin-bottom: 10%;
   gap: 3rem;
 }
 .cart {

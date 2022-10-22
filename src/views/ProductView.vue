@@ -50,8 +50,8 @@ const product = products.product;
         </div>
       </div>
     </div>
+    <ImageModal v-model="modals.image" :product="product" />
   </div>
-  <ImageModal v-model="modals.image" :product="product" />
 </template>
 
 <style scoped>
